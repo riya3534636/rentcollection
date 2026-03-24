@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import { setCurrentUser } from "../redux/userSlice";
+import { serverUrl } from "../main";
 
 const OwnerNavbar = ({ onMenuClick }) => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ const OwnerNavbar = ({ onMenuClick }) => {
 
      const handlelogout = async () => {
     try {
-      const result = await axios.post("http://localhost:3100/api/user/logout", {
+      const result = await axios.post(`${serverUrl}/api/user/logout`, {
         withCredentials: true,
       });
       console.log(result.data)
