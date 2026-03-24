@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { serverUrl } from "../main";
 
 const Profile = () => {
   const [tenant, setTenant] = useState(null);
@@ -9,7 +10,7 @@ const Profile = () => {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get("http://localhost:3100/api/tenant/getMyProfile", {
+      const res = await axios.get(`${serverUrl}/api/tenant/getMyProfile`, {
         withCredentials: true,
       });
         console.log(res.data)
