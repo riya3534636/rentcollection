@@ -5,7 +5,7 @@ import App from './App.jsx'
 import { Provider } from 'react-redux'
 import { store } from './redux/store.js'
 
-export const serverUrl="http://localhost:3100"
+export const serverUrl="https://backend-rent-2.onrender.com"
 
 createRoot(document.getElementById('root')).render(
  <Provider store={store}>
