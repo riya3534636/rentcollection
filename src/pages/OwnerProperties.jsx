@@ -13,6 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { serverUrl } from "../main";
 
 const Properties = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Properties = () => {
     try {
       setLoading(true);
       const result = await axios.get(
-        "http://localhost:3100/api/property/getAllProperties",
+        `${serverUrl}/api/property/getAllProperties`,
         { withCredentials: true },
       );
       // console.log("API response:", result.data);
