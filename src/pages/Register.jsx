@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../redux/userSlice";
+import { serverUrl } from "../main";
 
 export default function Register() {
 
@@ -19,7 +20,7 @@ export default function Register() {
    const handleRegister=async()=>{
         try {
           setIsLoading(true)
-          const result=await axios.post("http://localhost:3100/api/user/register",{name,email,password},
+          const result=await axios.post(`${serverUrl}/api/user/register`,{name,email,password},
             {withCredentials:true}
           )
            dispatch(setCurrentUser(result.data.user))
