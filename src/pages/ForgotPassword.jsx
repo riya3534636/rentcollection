@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { serverUrl } from "../main";
 
 const ForgetPassword = () => {
   const primaryColor = "bg-blue-500";
@@ -23,7 +24,7 @@ const ForgetPassword = () => {
     try {
        setIsLoading(true)
       const res = await axios.post(
-       "http://localhost:3100/api/user/forgot-password",
+       `${serverUrl}/api/user/forgot-password`,
         { email },
         { withCredentials: true }
       );
@@ -48,7 +49,7 @@ const ForgetPassword = () => {
     try {
       setIsLoading(true)
       const res = await axios.post(
-        "http://localhost:3100/api/user/verify-otp",
+        `${serverUrl}/api/user/verify-otp`,
         { email,otp },
         { withCredentials: true }
       );
@@ -73,7 +74,7 @@ const ForgetPassword = () => {
     try {
       setIsLoading(true)
       const res = await axios.post(
-        "http://localhost:3100/api/user/change-password",
+        `${serverUrl}/api/user/change-password`,
         {newpassword,confirmpassword,email },
         { withCredentials: true }
       );
