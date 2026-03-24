@@ -13,6 +13,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { serverUrl } from "../main";
 
 const TenantViewDetails = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const TenantViewDetails = () => {
   const fetchAllUsers = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3100/api/user/tenant-users",
+        `${serverUrl}/api/user/tenant-users`,
         { withCredentials: true },
       );
       // console.log(res.data.users);
@@ -45,7 +46,7 @@ const TenantViewDetails = () => {
   const assignTenantToUsers = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3100/api/tenant/assign-tenant",
+        `${serverUrl}/api/tenant/assign-tenant`,
         {
           tenantId: tenant._id,
           userId: selectedUser,
@@ -61,7 +62,7 @@ const TenantViewDetails = () => {
   const viewDetailsTenant = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3100/api/tenant/getTenantViewDetails/${id}`,
+        `${serverUrl}/api/tenant/getTenantViewDetails/${id}`,
         { withCredentials: true },
       );
       setTenant(result.data.tenant);
@@ -76,7 +77,7 @@ const TenantViewDetails = () => {
       return;
     try {
       const result = await axios.delete(
-        `http://localhost:3100/api/tenant/RemoveVacateTenant/${id}`,
+        `${serverUrl}/api/tenant/RemoveVacateTenant/${id}`,
         { withCredentials: true },
       );
       alert(result.data.message);
@@ -94,7 +95,7 @@ const TenantViewDetails = () => {
       return;
     try {
       const result = await axios.delete(
-        `http://localhost:3100/api/tenant/DeleteTenant/${id}`,
+        `${serverUrl}/api/tenant/DeleteTenant/${id}`,
         { withCredentials: true },
       );
       alert(result.data.message);
@@ -107,7 +108,7 @@ const TenantViewDetails = () => {
   const billsDetails = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3100/api/bill/getBillsByTenant/${id}`,
+        `${serverUrl}/api/bill/getBillsByTenant/${id}`,
         { withCredentials: true },
       );
 
