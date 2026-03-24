@@ -24,6 +24,8 @@ import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { setSingleProperty } from "../redux/ownerSlice";
 import { setAssignedTenantTo } from "../redux/ownerSlice";
+import { serverUrl } from "../main";
+
 
 const PropertyDetails = () => {
   const navigate = useNavigate();
@@ -39,7 +41,7 @@ const PropertyDetails = () => {
   const fetchProperties = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3100/api/property/getBy/${id}`,
+        `${serverUrl}/api/property/getBy/${id}`,
         {
           withCredentials: true,
         },
@@ -55,7 +57,7 @@ const PropertyDetails = () => {
     try {
       setLoading(true);
       const result = await axios.delete(
-        `http://localhost:3100/api/property/delete/${id}`,
+        `${serverUrl}/api/property/delete/${id}`,
         {
           withCredentials: true,
         },
@@ -96,7 +98,7 @@ const PropertyDetails = () => {
   const getProptertyDetails = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3100/api/property/getPropertyViewDetails/${id}`,
+        `${serverUrl}/api/property/getPropertyViewDetails/${id}`,
         { withCredentials: true },
       );
 
