@@ -4,6 +4,7 @@ import axios from "axios";
 import OwnerNavbar from "../Components/OwnerNavbar";
 import OwnerSidebar from "../Components/OwnerSideBar";
 import { useSelector } from "react-redux";
+import { serverUrl } from "../main";
 
 const OwnerDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -17,7 +18,7 @@ const OwnerDashboard = () => {
       try {
         if (!userData?._id) return; // safeguard if userData not loaded yet
         const res = await axios.get(
-          `http://localhost:3100/api/dashboard/stats?ownerId=${userData._id}`,
+          `${serverUrl}/api/dashboard/stats?ownerId=${userData._id}`,
           { withCredentials: true }
         );
         setStats(res.data.stats);
