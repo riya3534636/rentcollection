@@ -13,6 +13,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { useState } from "react";
+import { serverUrl } from "../main";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -73,7 +74,7 @@ const handleSubmit = async (e) => {
     formData.append("image", Backendimage); // ✅ File object goes here
 
     const result = await axios.post(
-      "http://localhost:3100/api/property/create",
+      `${serverUrl}/api/property/create`,
       formData,
       {
         withCredentials: true,
