@@ -240,6 +240,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { serverUrl } from "../main";
 
 const TenantBills = () => {
   const [bills, setBills] = useState([]);
@@ -250,7 +251,7 @@ const TenantBills = () => {
   const generateBills = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3100/api/bill/getTenatBill",
+        `${serverUrl}/api/bill/getTenatBill`,
         { withCredentials: true }
       );
 
@@ -266,7 +267,7 @@ const TenantBills = () => {
       console.log(billId);
 
       const res = await axios.post(
-        `http://localhost:3100/api/payment/create-order/${billId}`,
+        `${serverUrl}/api/payment/create-order/${billId}`,
         {},
         { withCredentials: true }
       );
@@ -279,7 +280,7 @@ const TenantBills = () => {
 
   const verifyPayment = async (response, billId) => {
     try {
-      const res = await axios.post("http://localhost:3100/api/payment/verifiy", {
+      const res = await axios.post(`${serverUrl}/api/payment/verifiy`, {
         razorpay_order_id: response.razorpay_order_id,
         razorpay_payment_id: response.razorpay_payment_id,
         razorpay_signature: response.razorpay_signature,
@@ -318,7 +319,7 @@ const TenantBills = () => {
   const handleAutoPay = async (bill) => {
     try {
       const res = await axios.post(
-        "http://localhost:3100/api/payment/create-subscription",
+        `${serverUrl}/api/payment/create-subscription`,
         { billId: bill._id }
       );
 
