@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { serverUrl } from "../main";
 
 const AssignTenant = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const AssignTenant = () => {
   const getActiveTenant = async () => {
     try {
       const result = await axios.get(
-        "http://localhost:3100/api/tenant/getActiveTentant",
+        `${serverUrl}/api/tenant/getActiveTentant`,
         { withCredentials: true },
       );
 
@@ -56,7 +57,7 @@ const AssignTenant = () => {
 
     try {
       const result = await axios.post(
-        `http://localhost:3100/api/property/AssignTenant/${propertyId}`,
+        `${serverUrl}/api/property/AssignTenant/${propertyId}`,
         {
           tenantId: selectedTenantId,
           leaseStartDate,
