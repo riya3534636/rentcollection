@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { serverUrl } from "../main";
 
 const AgreementForm = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const AgreementForm = () => {
   const getProptertyDetails = async () => {
   try {
     const result = await axios.get(
-      `http://localhost:3100/api/property/getPropertyViewDetails/${singleProperty._id}`,
+      `{$serverUrl}/api/property/getPropertyViewDetails/${singleProperty._id}`,
       { withCredentials: true }
     );
 
@@ -57,7 +58,7 @@ const AgreementForm = () => {
 
      const CreatingAggrement = async () => {
   try {
-    const result = await axios.post("http://localhost:3100/api/agreement/create", {
+    const result = await axios.post(`${serverUrl}/api/agreement/create`, {
       tenantId: tenantId,   
       propertyId: singleProperty?._id,           // property ID from redux
       rentAmount: rentAmount,
