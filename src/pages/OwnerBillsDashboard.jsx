@@ -3,6 +3,7 @@ import { ArrowLeft, Receipt, CreditCard, Clock, Eye } from "lucide-react"; // Ad
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { serverUrl } from "../main";
 
 export default function BillsPage() {
   const [bills, setBills] = useState([]);
@@ -12,7 +13,7 @@ export default function BillsPage() {
   const getBills = async () => {
     try {
       const result = await axios.get(
-        "http://localhost:3100/api/bill/getOwnerBills",
+        `${serverUrl}/api/bill/getOwnerBills`,
         { withCredentials: true },
       );
       setBills(result.data);
