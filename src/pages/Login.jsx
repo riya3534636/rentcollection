@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { setCurrentUser } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
+import { serverUrl } from "../main";
 
 export default function Login() {
   const [email, setemail] = useState("");
@@ -19,7 +20,7 @@ export default function Login() {
     try {
       setIsLoading(true);
       const result = await axios.post(
-        "http://localhost:3100/api/user/login",
+       `${serverUrl}/api/user/login`,
         { email, password },
         { withCredentials: true },
       );
@@ -35,22 +36,7 @@ export default function Login() {
       setIsLoading(false);
     }
   };
-  //     if (result.data.success) {
-  //       toast.success(result.data.message);
-  //       setErr("");
-  //       navigate("/tenant");
-  //     } else {
-  //       setErr(result.data.message);
-  //       toast.error(result.data.message);
-  //     }
-  //   } catch (error) {
-  //     setErr(error.response?.data?.message || "Something went wrong");
-  //     toast.error(error.response?.data?.message || "Something went wrong"); //the error which u recive from backend
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
