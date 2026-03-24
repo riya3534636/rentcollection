@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { serverUrl } from "../main";
 
 export default function AddTenant() {
     const navigate=useNavigate()
@@ -33,7 +34,7 @@ export default function AddTenant() {
   e.preventDefault();
   try {
     const result = await axios.post(
-      "http://localhost:3100/api/tenant/addTenant",
+      `${serverlUrl}/api/tenant/addTenant`,
       formData,
       { withCredentials: true }
     );
