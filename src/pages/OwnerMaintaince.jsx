@@ -12,6 +12,7 @@ import {
   Filter,
   ArrowLeft
 } from "lucide-react";
+import { serverUrl } from "../main";
 
 const statusConfig = {
   OPEN: { 
@@ -38,7 +39,7 @@ export default function OwnerMaintenance() {
   const getIssues = async () => {
     try {
       const result = await axios.get(
-        "http://localhost:3100/api/maintenace/getByOwner",
+        `${serverUrl}/api/maintenace/getByOwner`,
         { withCredentials: true }
       );
       setIssues(result.data);
