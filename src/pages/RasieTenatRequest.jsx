@@ -12,6 +12,7 @@ import {
   Loader2 
 } from "lucide-react"; // Using Lucide for modern icons
 import {  useNavigate } from "react-router-dom";
+import { serverUrl } from "../main";
 
 const RaiseRequest = () => {
   const [description, setDescription] = useState("");
@@ -35,7 +36,7 @@ const RaiseRequest = () => {
     setStatus(null);
     try {
       await axios.post(
-        "http://localhost:3100/api/maintenace/createIssue",
+        `${serverUrl}/api/maintenace/createIssue`,
         { description, category },
         { withCredentials: true }
       );
