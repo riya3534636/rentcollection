@@ -6,6 +6,7 @@ import {
   Calendar, Search, Trash2, ExternalLink, Filter, ChevronRight,
   ArrowLeft
 } from "lucide-react";
+import { serverUrl } from "../main";
 
 const OwnerTenantsDashboard = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const OwnerTenantsDashboard = () => {
 
   const getOwnerTenant = async () => {
     try {
-      const res = await axios.get("http://localhost:3100/api/tenant/getByOwnerTenat", {
+      const res = await axios.get(`${serverUrl}/api/tenant/getByOwnerTenat`, {
         withCredentials: true,
       });
       if (res.data.success) {
