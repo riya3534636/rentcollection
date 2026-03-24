@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { IoMdArrowBack } from "react-icons/io";
+import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
@@ -99,7 +99,7 @@ const ForgetPassword = () => {
       <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-8">
         <div className="flex items-center gap-2">
           <Link to="/register">
-            <IoMdArrowBack size={30} className="text-blue-500" />
+            <ArrowLeft size={30} className="text-blue-500" />
           </Link>
           <h1
             className="text-3xl font-bold text-center"
