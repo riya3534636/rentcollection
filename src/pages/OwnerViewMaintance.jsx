@@ -13,6 +13,7 @@ import {
   Clock,
   AlertCircle
 } from "lucide-react";
+import { serverUrl } from "../main";
 
 export default function MaintenanceDetails() {
   const [status, setStatus] = useState("open");
@@ -23,7 +24,7 @@ export default function MaintenanceDetails() {
   const getDetails = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3100/api/maintenace/getDetailsMaintenance/${id}`,
+        `${serverUrl}/api/maintenace/getDetailsMaintenance/${id}`,
         { withCredentials: true }
       );
       setMaintenance(result.data.maintenance);
@@ -36,7 +37,7 @@ export default function MaintenanceDetails() {
   const updateStatus = async () => {
     try {
       await axios.put(
-        `http://localhost:3100/api/maintenace/updateStatus/${id}`,
+        `${serverUrl}/api/maintenace/updateStatus/${id}`,
         { status: status.toLowerCase() },
         { withCredentials: true }
       );
