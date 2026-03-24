@@ -2,6 +2,8 @@ import axios from "axios";
 import { ArrowLeft, Download, Printer, CheckCircle2, Building2, User, CreditCard } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { serverUrl } from "../main";
+
 
 const ViewReciptTenant = () => {
   const { id } = useParams();
@@ -10,7 +12,7 @@ const ViewReciptTenant = () => {
 
   const getRecipt = async () => {
     try {
-      const res = await axios.get(`http://localhost:3100/api/recipt/${id}`, {
+      const res = await axios.get(`${serverUrl}/api/recipt/${id}`, {
         withCredentials: true,
       });
       setReceipt(res.data.receipt);
@@ -30,7 +32,7 @@ const ViewReciptTenant = () => {
 const downloadReceipt = async (billId) => {
   try {
     const res = await axios.get(
-      `http://localhost:3100/api/recipt/${id}/pdf`,
+      `${serverUrl}/api/recipt/${id}/pdf`,
       {
         responseType: "blob", // ensures we get binary data
         withCredentials: true, // if your backend requires cookies
