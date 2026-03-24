@@ -14,6 +14,7 @@ import {
   ArrowLeft
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { serverUrl } from "../main";
 
 export default function AgreementList() {
   const [agreements, setAgreements] = useState([]);
@@ -23,7 +24,7 @@ export default function AgreementList() {
   const getAllAgreements = async () => {
     try {
       const result = await axios.get(
-        "http://localhost:3100/api/agreement/getAllAggrements",
+        `${serverUrl}/api/agreement/getAllAggrements`,
         { withCredentials: true }
       );
       setAgreements(result.data);
@@ -48,7 +49,7 @@ export default function AgreementList() {
 
     try {
       const result = await axios.delete(
-        `http://localhost:3100/api/agreement/endAggrement/${targetId}`,
+        `${serverUrl}/api/agreement/endAggrement/${targetId}`,
         { withCredentials: true }
       );
       alert(result.data.message);
