@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { serverUrl } from "../main";
 
 const TenantMaintenance = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const TenantMaintenance = () => {
   const getMyIssues = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3100/api/maintenace/getMyIssue",
+        `${serverUrl}/api/maintenace/getMyIssue`,
         { withCredentials: true }
       );
       setIssues(res.data.maintenance); // save array to state
