@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { serverUrl } from "../main";
 
 const statusStyle = (status) => {
   if (status === "Paid") return "bg-green-100 text-green-700";
@@ -18,7 +19,7 @@ export default function OwnerViewPropertyBills() {
 
   const fetchbills=async()=>{
     try {
-        const result=await axios.get(`http://localhost:3100/api/bill/getBillsByProperty/${id}`,{
+        const result=await axios.get(`${serverUrl}/api/bill/getBillsByProperty/${id}`,{
             withCredentials:true
         })
         console.log(result.data)
