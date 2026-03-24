@@ -126,6 +126,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { serverUrl } from "../main";
 
 export default function TenantDashboard() {
   const [tenantSummary, setTenantSummary] = useState(null);
@@ -136,7 +137,7 @@ export default function TenantDashboard() {
   const getTenantSummary = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3100/api/tenant/tenantDashboard/summary",
+        `${serverUrl}/api/tenant/tenantDashboard/summary`,
         { withCredentials: true }
       );
       setTenantSummary(res.data);
@@ -148,7 +149,7 @@ export default function TenantDashboard() {
   const getCurrentBill = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3100/api/tenant/getCurrentMonthBill",
+        `${serverUrl}/api/tenant/getCurrentMonthBill`,
         { withCredentials: true }
       );
       setCurrentBill(res.data);
@@ -160,7 +161,7 @@ export default function TenantDashboard() {
   const getMaintenance = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3100/api/tenant/getMaintenanceSummary",
+        `${serverUrl}/api/tenant/getMaintenanceSummary`,
         { withCredentials: true }
       );
       setMaintenanceSummary(res.data);
